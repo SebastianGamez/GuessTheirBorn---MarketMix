@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="Usuario">
+        <div id="app">
+            <form id="formName">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" v-model="nameInput">
+            </form>
+    </section>
+    <section id="game">
+        <form action="" id="formGame">
+            <label for="">Ingrese el año a adivinar</label>
+            <input type="text" id="year" v-model="bornInput">
+        </form>
+    </section>
+
+    <section id="result">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Intentos</th>
+            </tr>
+            <tr v-for="item in result">
+                <td v-text="item.name"></td>
+                <td v-text="item.attemps"></td>
+            </tr>
+
+        </table>
+    </section>
+
+    </div>
+
+</body>
+
+</html>
