@@ -65,11 +65,22 @@ const app = createApp({
             }
 
         },
-        backLogin(){
-            this.attempts = 0;
+        seeResults(){
+            this.render.login = false;
+            this.render.game = false;
+            this.render.results = true;
+        },
+        backLoginFromResults(){
+            this.render.login = false;
+            this.render.game = true;
+            this.render.results = false;
+        },
+        backLoginFromGame(){
+            attempts = 0;
             this.render.login = true;
             this.render.game = false;
             this.render.results = false;
         }
+
     }
 });
