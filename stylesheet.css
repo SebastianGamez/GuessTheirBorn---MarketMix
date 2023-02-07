@@ -10,13 +10,19 @@ body{
     background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
-      
-    height: 109vh;
     display: grid;
     place-items: center;
     text-align: center;
   
 
+}
+
+section{
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .formName--div{
@@ -37,7 +43,8 @@ input{
     border-radius: 10px;
     border: none;
     text-align: center;
-    width: 100px;
+    width: 200px;
+    margin: 10px;
 }
 
 .table{

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
-    <title>Document</title>
+    <title>GuessTheBornDate</title>
 </head>
 
 <body>
@@ -14,15 +14,28 @@
         <div id="app">
 
             <h1>Adivina la Edad</h1>
-
-            <section id="Usuario">
+            
+            <section>
                 <form id="formName">
                    <div class="formName--div">
                     <input type="text" id="name" v-model="nameInput" placeholder="Nombre">
-
-                    <input type="text" id="year" v-model="bornInput" placeholder="Edad">
                    </div>
+                   <input type="button" value="Aceptar">
                 </form>
+                <input type="button" value="Ver puntajes">
+            </section>
+
+            <section>
+                <form id="formName">
+                   <div class="formName--div">
+                    <input type="text" id="year" v-model="bornInput" placeholder="Edad" />
+                </div>
+                <input type="button" id="year" value="Probar" />
+                </form>
+                <div>
+                    <input type="button" value="Ver puntajes">
+                    <input type="button" value="Atrás">
+                </div>
             </section>
     
        
@@ -38,6 +51,7 @@
                          <td v-text="item.attemps"></td>
                      </tr>
                  </table>
+                 <input type="button" value="Atrás">
              </section>
          </div>
     </main>
