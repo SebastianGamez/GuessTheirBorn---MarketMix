@@ -37,7 +37,7 @@ const app = createApp({
             this.render.login = false;
             this.render.game = true;
 
-            this.name = ''
+            this.nameInput = ''
         },
         getRandomNumber(){
             return Math.floor(Math.random() * 4);
