@@ -5,39 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
     <title>Document</title>
 </head>
 
 <body>
-    <section id="Usuario">
+    <main class="main">
         <div id="app">
-            <form id="formName">
-                <label for="name">Nombre</label>
-                <input type="text" id="name" v-model="nameInput">
-            </form>
-    </section>
-    <section id="game">
-        <form action="" id="formGame">
-            <label for="">Ingrese el año a adivinar</label>
-            <input type="text" id="year" v-model="bornInput">
-        </form>
-    </section>
 
-    <section id="result">
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Intentos</th>
-            </tr>
-            <tr v-for="item in result">
-                <td v-text="item.name"></td>
-                <td v-text="item.attemps"></td>
-            </tr>
+            <h1>Adivina la Edad</h1>
 
-        </table>
-    </section>
+            <section id="Usuario">
+                <form id="formName">
+                   <div class="formName--div">
+                    <input type="text" id="name" v-model="nameInput" placeholder="Nombre">
 
-    </div>
+                    <input type="text" id="year" v-model="bornInput" placeholder="Edad">
+                   </div>
+                </form>
+            </section>
+    
+       
+             <section class="result--section" id="result">
+                 <table class="table">
+                     <tr>
+                         <th>Nombre</th>
+                         <th>Intentos</th>
+                     </tr>
+
+                     <tr v-for="item in result">
+                         <td v-text="item.name"></td>
+                         <td v-text="item.attemps"></td>
+                     </tr>
+                 </table>
+             </section>
+         </div>
+    </main>
 
 </body>
 
