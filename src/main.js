@@ -32,12 +32,14 @@ const app = createApp({
 
     methods: {
         registerUser(){
-            swal("Adivina el año", `${this.name} registrado con exito`, "success");
+            if(this.nameInput === '') return swal("Adivina el año", "Ingresa un nombre de usuario", "error");
             this.name = this.nameInput;
+            swal("Adivina el año", `${this.name} registrado con exito`, "success");
             this.render.login = false;
             this.render.game = true;
 
-            this.nameInput = ''
+            this.nameInput = '';
+            this.attempts = 0;
         },
         getRandomNumber(){
             return Math.floor(Math.random() * 4);
