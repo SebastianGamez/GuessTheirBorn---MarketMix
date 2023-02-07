@@ -18,7 +18,7 @@ body{
 }
 
 section{
-    height: 100vh;
+    height: 90vh;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -37,6 +37,12 @@ h1{
     color: rgb(206, 206, 206);
 }
 
+td{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
 
 input{
     padding: 10px;

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
+    <!--Math-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.1/math.min.js" integrity="sha512-WwbnWc5N0epFy5Ba2RfPttV7TvJX8/OfdXyAzmCrzdhcpAsO8jfo/IOJIW6gzgXcGiPyv5w2d2vnWgHV/IXCGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>GuessTheBornDate</title>
 </head>
 
@@ -15,46 +17,54 @@
 
             <h1>Adivina la Edad</h1>
             
-            <section>
-                <form id="formName">
+            <section v-if="render.login" >
+                <form id="formName" @submit.prevent="registerUser">
                    <div class="formName--div">
                     <input type="text" id="name" v-model="nameInput" placeholder="Nombre">
                    </div>
-                   <input type="button" value="Aceptar">
+                   <input type="submit" value="Aceptar">
                 </form>
-                <input type="button" value="Ver puntajes">
+                <input type="button" value="Ver puntajes" @click="seeResults">
             </section>
 
-            <section>
-                <form id="formName">
+            <section v-if="render.game">
+                <form id="formName" @submit.prevent="startPlay">
                    <div class="formName--div">
-                    <input type="text" id="year" v-model="bornInput" placeholder="Edad" />
+                    <input type="text" id="year" v-model.number="bornInput" placeholder="Adivina el año" />
                 </div>
-                <input type="button" id="year" value="Probar" />
+                <input type="submit" id="year" value="Probar" />
                 </form>
                 <div>
-                    <input type="button" value="Ver puntajes">
-                    <input type="button" value="Atrás">
+                    <input type="button" value="Ver puntajes" @click="seeResults">
+                    <input type="button" value="Atrás" @click="backLoginFromGame">
                 </div>
             </section>
     
        
-             <section class="result--section" id="result">
+             <section class="result--section" id="result" v-if="render.results">
                  <table class="table">
                      <tr>
                          <th>Nombre</th>
                          <th>Intentos</th>
                      </tr>
 
-                     <tr v-for="item in result">
+                     <tr v-for="item in results">
                          <td v-text="item.name"></td>
-                         <td v-text="item.attemps"></td>
+                         <td v-text="item.attempts"></td>
                      </tr>
                  </table>
-                 <input type="button" value="Atrás">
+                 <input type="button" value="Atrás" @click="backLoginFromResults">
              </section>
          </div>
     </main>
+    <!--Vue 3-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--Sweet Alert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Data-->
+    <script src="./src/data/bornDatesData.js"></script>
+    <!--App-->
+    <script src="./src/main.js"></script>
 
 </body>
 

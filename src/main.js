@@ -10,7 +10,11 @@ const app = createApp({
                 results: false
             },
 
+            name: '',
+
             attempts: 0,
+
+            nameCharacter: '',
 
             bornToGuess: '',
             
@@ -27,56 +31,71 @@ const app = createApp({
     },
 
     methods: {
-        addUser(){
-            bornDatesData.push(formData);
-            swal("Usuario", "Usuario registrado con exito", "success");
+        registerUser(){
+            swal("Adivina el año", `${this.name} registrado con exito`, "success");
+            this.name = this.nameInput;
+            this.render.login = false;
+            this.render.game = true;
         },
         getRandomNumber(){
             return Math.floor(Math.random() * 4);
         },
         getRandomBornDate(){
-            return bornDatesData[Math.floor(Math.random() * (bornDatesData.length()))].bornDate.getFullYear();
+            const {name, bornDate} = bornDatesData[Math.floor(Math.random() * 5)];
+            this.nameCharacter = name;
+            return bornDate.getFullYear();
         },
         startPlay(){
 
             if(this.attempts === 7) {
                 this.attempts = 0;
-                return swal("Usuario", "Se acabaron los intentos", "error");
+                this.bornInput = '';
+                return swal(`${this.name}`, `Se acabaron los intentos, el año era ${this.bornToGuess}, año de nacimiento de ${this.nameCharacter}. Juguemos de nuevo`, "error");
             }
 
             ++this.attempts;
 
             this.bornToGuess = this.attempts === 1 ? this.getRandomBornDate() : this.bornToGuess;
 
-            const bornSelected = this.bornInput
+            const bornSelected = this.bornInput;
 
             if(this.bornToGuess < bornSelected){
-                swal("Usuario", `La fecha seleccionada es mayor, intenta con un año entre ${this.bornToGuess - this.getRandomNumber} y ${this.bornToGuess + this.getRandomNumber}`, "warning");
+                swal(`${this.name}`, `La fecha seleccionada es mayor, intenta con un año entre ${this.bornToGuess - this.getRandomNumber()} y ${this.bornToGuess + this.getRandomNumber()}`, "warning");
             } else if(this.bornToGuess > bornSelected){
-                swal("Usuario", `La fecha seleccionada es menor, intenta con un año entre ${this.bornToGuess - this.getRandomNumber} y ${this.bornToGuess + this.getRandomNumber}`, "warning");
+                swal("Usuario", `La fecha seleccionada es menor, intenta con un año entre ${this.bornToGuess - this.getRandomNumber()} y ${this.bornToGuess + this.getRandomNumber()}`, "warning");
 
             } else {
-                swal("Usuario", "Felicitaciones, la fecha seleccionada es correcta", "success");
+                swal(`${this.name}`, `Felicitaciones, el año seleccionado es correcto, ${this.bornToGuess} fue el año de nacimiento de ${this.nameCharacter}. Puedes ver tu puntaje en 'Ver resultados'`, "success");
                 this.results.push({
-                    name: this.formData.name,
+                    name: this.name,
                     attempts: this.attempts
                 });
                 localStorage.setItem('results', JSON.stringify(this.results));
+                this.bornInput = '';
             }
 
         },
         seeResults(){
+            if(this.results.length === 0) return swal("Usuario", "No hay resultados para mostrar", "warning");
             this.render.login = false;
             this.render.game = false;
             this.render.results = true;
         },
         backLoginFromResults(){
-            this.render.login = false;
-            this.render.game = true;
-            this.render.results = false;
+            this.attempts = 0;
+            if(this.name !== ''){
+                this.render.login = false;
+                this.render.game = true;
+                this.render.results = false;
+            }
+            else {
+                this.render.login = true;
+                this.render.game = false;
+                this.render.results = false;
+            }
         },
         backLoginFromGame(){
-            attempts = 0;
+            this.attempts = 0;
             this.render.login = true;
             this.render.game = false;
             this.render.results = false;
@@ -84,3 +103,5 @@ const app = createApp({
 
     }
 });
+
+app.mount('#app');
