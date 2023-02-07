@@ -14,11 +14,17 @@ body{
     place-items: center;
     text-align: center;
   
+}
 
+h1{
+    color: rgb(206, 206, 206);
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 section{
-    height: 90vh;
+    height: 100vh;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -51,6 +57,7 @@ input{
     text-align: center;
     width: 200px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .table{

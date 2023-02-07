@@ -15,9 +15,9 @@
     <main class="main">
         <div id="app">
 
-            <h1>Adivina la Edad</h1>
             
             <section v-if="render.login" >
+                <h1>Adivina la Edad</h1>
                 <form id="formName" @submit.prevent="registerUser">
                    <div class="formName--div">
                     <input type="text" id="name" v-model="nameInput" placeholder="Nombre">
@@ -28,6 +28,7 @@
             </section>
 
             <section v-if="render.game">
+                <h1>Adivina la Edad</h1>
                 <form id="formName" @submit.prevent="startPlay">
                    <div class="formName--div">
                     <input type="text" id="year" v-model.number="bornInput" placeholder="Adivina el año" />
@@ -42,6 +43,7 @@
     
        
              <section class="result--section" id="result" v-if="render.results">
+                <h1>Adivina la Edad</h1>
                  <table class="table">
                      <tr>
                          <th>Nombre</th>
