@@ -24,7 +24,23 @@
                    </div>
                    <input type="submit" value="Aceptar">
                 </form>
-                <input type="button" value="Ver puntajes" @click="seeResults">
+                <input type="button" value="Ver puntajes" @click="seeResults" v-if="render.resultsButton">
+                <input type="button" value="Registrar personaje" @click="goToRegister">
+            </section>
+
+            <section v-if="render.register" >
+                <h1>Adivina la Edad</h1>
+                <form id="formName" @submit.prevent="registerCharacter">
+                   <div class="formName--div">
+                    <input type="text" id="name" v-model="nameRegisterInput" placeholder="Nombre">
+                   </div>
+                   <div class="bornDate--div">
+                    <input type="date" id="bornDate" v-model="bornDateRegisterInput" placeholder="Fecha de nacimiento">
+                   </div>
+                   <input type="submit" value="Aceptar">
+                </form>
+                <input type="button" value="Ver puntajes" @click="seeResults" v-if="render.resultsButton">
+                <input type="button" value="Atrás" @click="backLoginFromGame">
             </section>
 
             <section v-if="render.game">
@@ -36,7 +52,7 @@
                 <input type="submit" id="year" value="Probar" />
                 </form>
                 <div>
-                    <input type="button" value="Ver puntajes" @click="seeResults">
+                    <input type="button" value="Ver puntajes" @click="seeResults" v-if="render.resultsButton">
                     <input type="button" value="Atrás" @click="backLoginFromGame">
                 </div>
             </section>
